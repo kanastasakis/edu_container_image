@@ -1,0 +1,15 @@
+name: Docker iamge CI
+
+on: 
+  push: 
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-in: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag com.edu_container_image:$(date +%s)
